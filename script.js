@@ -1,4 +1,4 @@
-  new Chart(document.getElementById("otro"), {
+ new Chart(document.getElementById("otro"), {
                 type: "scatter",
                 data: {
                     datasets: [
@@ -124,7 +124,7 @@
                             },
                         },
                     },
-					
+
                 },
             });
 
