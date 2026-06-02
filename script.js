@@ -128,13 +128,6 @@ new Chart(document.getElementById("otro"), {
 });
 
 
-/* ─────────────────────────────────────────
-   GRÁFICO 2 — Burbujas: Acreditación vs Ingreso al egreso,
-               tamaño de burbuja = arancel anual
-   Datos: Futuro Laboral (Mifuturo.cl) / SIES 2026 / CNA
-   Se agrupan por institución (promedio cuando hay varios programas).
-   Ingreso = mediana de ingresos al 4.° año de egreso según Futuro Laboral.
-───────────────────────────────────────── */
 new Chart(document.getElementById("dispersion"), {
     type: "bubble",
     data: {
