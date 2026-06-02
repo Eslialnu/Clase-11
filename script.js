@@ -129,7 +129,7 @@
             });
 
 
- new Chart(document.getElementById("disperción"), {
+new Chart(document.getElementById("dispersion"), {
     type: "bubble",
     data: {
         datasets: [
