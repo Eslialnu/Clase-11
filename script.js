@@ -129,66 +129,94 @@
             });
 
 
-new Chart(document.getElementById("mapa-diseno"), {
-    type: "bar",
+new Chart(document.getElementById("burbujas"), {
+    type: "bubble",
     data: {
-        labels: [
-            "Metropolitana",
-            "Valparaíso",
-            "Arica y Parinacota",
-            "Biobío",
-            "Los Ríos",
-            "Maule",
-            "La Araucanía",
-            "Antofagasta",
-            "Ñuble",
-            "Coquimbo",
-            "Los Lagos",
-            "Tarapacá",
-            "O'Higgins",
-        ],
         datasets: [
             {
+                label: "Bubble Dataset",
                 data: [
-                    6489000,
-                    5556000,
-                    4922000,
-                    4712000,
-                    4588000,
-                    4691000,
-                    4282000,
-                    4096000,
-                    3798000,
-                    3646000,
-                    3288000,
-                    3288000,
-                    3252000,
+                    /*
+                      Campos:
+                        name          — nombre del programa
+                        x             — años de acreditación institucional (CNA)
+                        y             — ingreso mediano al 4.° año de egreso en CLP (Futuro Laboral)
+                        r             — radio proporcional al arancel anual (ver escala abajo)
+                        arancel       — arancel real en CLP (para el tooltip)
+                      
+                      Radio: normalizado linealmente entre r=4 (arancel ~$4.000.000)
+                      y r=18 (arancel ~$10.400.000).
+                      Fórmula aplicada: r = 4 + ((arancel - 4000000) / 6400000) * 14
+                    */
+                    { name: "DISEÑO — UNIACC",                               x: 3, y:  580000, r:  4.1, arancel:  4030000 },
+                    { name: "DISEÑO EN COMUNICACIÓN VISUAL — UTEM",          x: 4, y:  620000, r:  4.8, arancel:  4763300 },
+                    { name: "DISEÑO INDUSTRIAL — UTEM",                      x: 4, y:  670000, r:  5.0, arancel:  4891000 },
+                    { name: "DISEÑO — U. GABRIELA MISTRAL",                  x: 4, y:  590000, r:  4.8, arancel:  4814000 },
+                    { name: "DISEÑO — U. DE VIÑA DEL MAR",                   x: 4, y:  560000, r:  4.1, arancel:  4277000 },
+                    { name: "DISEÑO — U. DE LA SERENA",                      x: 5, y:  590000, r:  4.2, arancel:  4071000 },
+                    { name: "DISEÑO GRÁFICO — U. DEL BÍO-BÍO",              x: 5, y:  610000, r:  4.1, arancel:  4307000 },
+                    { name: "DISEÑO INDUSTRIAL — U. DEL BÍO-BÍO",           x: 5, y:  680000, r:  4.3, arancel:  4434000 },
+                    { name: "DISEÑO — U. DE LAS AMÉRICAS",                   x: 5, y:  600000, r:  4.8, arancel:  4730000 },
+                    { name: "DISEÑO — U. CATÓLICA DE TEMUCO",                x: 5, y:  630000, r:  5.3, arancel:  5276000 },
+                    { name: "DISEÑO GRÁFICO — U. DE ANTOFAGASTA",            x: 5, y:  610000, r:  5.1, arancel:  5120000 },
+                    { name: "DISEÑO — U. DE PLAYA ANCHA",                    x: 5, y:  580000, r:  4.3, arancel:  4305000 },
+                    { name: "INGENIERÍA RV Y JUEGOS — U. BERNARDO O'HIGGINS",x: 5, y:  720000, r:  5.9, arancel:  5900000 },
+                    { name: "DISEÑO MENCIÓN — U. MAYOR",                     x: 5, y:  730000, r: 10.0, arancel:  7214218 },
+                    { name: "DISEÑO DE MODA Y MANAGEMENT — U. FINIS TERRAE", x: 5, y:  760000, r: 10.2, arancel:  7320000 },
+                    { name: "DISEÑO — U. FINIS TERRAE",                      x: 5, y:  730000, r: 10.2, arancel:  7320000 },
+                    { name: "DISEÑO — U. AUSTRAL DE CHILE",                  x: 6, y:  680000, r:  5.9, arancel:  5887000 },
+                    { name: "DISEÑO — U. DE TALCA",                          x: 6, y:  650000, r:  5.9, arancel:  5887000 },
+                    { name: "DISEÑO — U. DE VALPARAÍSO",                     x: 6, y:  660000, r:  5.7, arancel:  5713000 },
+                    { name: "DISEÑO MULTIMEDIA — U. DE TARAPACÁ",            x: 6, y:  670000, r:  6.6, arancel:  6555000 },
+                    { name: "INGENIERÍA EN DISEÑO — USM",                    x: 6, y:  980000, r:  6.0, arancel:  6000000 },
+                    { name: "INGENIERÍA FAB. Y DISEÑO IND. — USM",           x: 6, y:  950000, r:  5.2, arancel:  5180000 },
+                    { name: "DISEÑO DE JUEGOS DIGITALES — U. ANDRÉS BELLO",  x: 6, y:  740000, r:  9.9, arancel:  7136000 },
+                    { name: "DISEÑO DE VESTUARIO Y TEXTIL — U. ANDRÉS BELLO",x: 6, y:  720000, r: 10.0, arancel:  7148000 },
+                    { name: "DISEÑO GRÁFICO — U. ANDRÉS BELLO",              x: 6, y:  730000, r:  9.8, arancel:  7065000 },
+                    { name: "DISEÑO — U. DIEGO PORTALES",                    x: 6, y:  790000, r: 10.6, arancel:  7597000 },
+                    { name: "INGENIERÍA EN DISEÑO — U. ADOLFO IBÁÑEZ",       x: 6, y: 1180000, r: 15.3, arancel:  9754692 },
+                    { name: "DISEÑO — U. DEL DESARROLLO",                    x: 6, y:  980000, r: 15.3, arancel:  9754692 },
+                    { name: "BACHILLERATO EN DISEÑO — U. DEL DESARROLLO",    x: 6, y:  870000, r: 16.2, arancel: 10364360 },
+                    { name: "DISEÑO INDUSTRIAL — USACH",                     x: 7, y:  790000, r:  5.0, arancel:  4989000 },
+                    { name: "DISEÑO EN COM. VISUAL — USACH",                 x: 7, y:  780000, r:  6.6, arancel:  6552000 },
+                    { name: "DISEÑO TEATRAL — U. DE CHILE",                  x: 7, y:  650000, r:  6.5, arancel:  5492400 },
+                    { name: "DISEÑO — U. DE CHILE",                          x: 7, y:  870000, r:  6.5, arancel:  6486700 },
+                    { name: "DISEÑO — PUCV",                                 x: 7, y:  820000, r:  9.7, arancel:  6915000 },
+                    { name: "DISEÑO — PUC",                                  x: 7, y: 1050000, r: 14.0, arancel:  8080000 },
                 ],
-                backgroundColor: "rgba(241,142,45,.75)",
-                borderWidth: 0,
+                backgroundColor: "rgba(241,142,45,.65)",
+                borderColor: "rgba(241,142,45,1)",
+                borderWidth: 1,
+                hoverBorderWidth: 2,
             },
         ],
     },
     options: {
-        indexAxis: "y",
         scales: {
             x: {
+                type: "linear",
+                position: "bottom",
+                min: 2,
+                max: 8,
                 grid: { color: "rgba(0,0,0,0.06)" },
                 border: { color: "#ccc" },
                 ticks: {
                     font: { family: "'Georama', sans-serif", size: 11 },
                     color: "#999",
                     callback: function (value) {
-                        return "$ " + value.toLocaleString("es-CL");
+                        return Number.isInteger(value) ? value + " años" : null;
                     },
                 },
             },
             y: {
-                grid: { display: false },
-                border: { color: "#ccc" },
+                grid: { color: "rgba(0,0,0,0.06)" },
+                border: { color: "#bbb", dash: [4, 4] },
                 ticks: {
                     font: { family: "'Georama', sans-serif", size: 11 },
                     color: "#999",
+                    callback: function (value) {
+                        return "$ " + value.toLocaleString("es-CL");
+                    },
                 },
             },
         },
@@ -205,10 +233,17 @@ new Chart(document.getElementById("mapa-diseno"), {
                 padding: 10,
                 callbacks: {
                     label: function (context) {
-                        return "Arancel promedio: $ " + context.raw.toLocaleString("es-CL");
+                        const point = context.raw;
+                        return [
+                            point.name,
+                            "Acreditación: " + point.x + " años",
+                            "Ingreso 4.° año: $ " + point.y.toLocaleString("es-CL"),
+                            "Arancel anual: $ " + point.arancel.toLocaleString("es-CL"),
+                        ];
                     },
                 },
             },
         },
     },
 });
+ 
